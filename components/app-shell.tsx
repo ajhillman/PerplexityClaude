@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
+import { useDesk } from "@/lib/store";
 import { CommandBar } from "./command-bar";
 
 const NAV = [
@@ -17,6 +18,7 @@ const NAV = [
 
 export function AppShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const desk = useDesk();
 
   return (
     <div className="desk-frame">
@@ -47,7 +49,9 @@ export function AppShell({ children }: { children: ReactNode }) {
         </nav>
       </header>
       <CommandBar />
-      <main className="desk-main">{children}</main>
+      <main className="desk-main">
+        {desk.hydrated ? children : <p className="opening">Opening the desk…</p>}
+      </main>
     </div>
   );
 }

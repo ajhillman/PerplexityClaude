@@ -8,6 +8,7 @@ import type { DeskState } from "./types";
 const STORAGE_KEY = "chief-of-staff:v1";
 
 let state: DeskState = emptyDesk();
+const serverSnapshot: DeskState = emptyDesk();
 const listeners = new Set<() => void>();
 
 function emit(): void {
@@ -107,7 +108,7 @@ export function subscribeDesk(listener: () => void): () => void {
 }
 
 export function useDesk(): DeskState {
-  return useSyncExternalStore(subscribeDesk, getDesk, emptyDesk);
+  return useSyncExternalStore(subscribeDesk, getDesk, () => serverSnapshot);
 }
 
 export function exportDesk(): string {
