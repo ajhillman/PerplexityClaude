@@ -1,0 +1,17 @@
+---
+description: Safety rules for reading and writing Google Contacts during enrichment.
+alwaysApply: true
+---
+
+# Google Contacts safety
+
+- Connect `googlecontacts` through Composio before listing or updating contacts.
+- Paginate `GOOGLECONTACTS_LIST_CONNECTIONS` until there is no `page_token`.
+- Fill empty fields only. Preserve existing values unless the user asked to replace them.
+- Multi-value People API fields are replaced on update. Merge existing emails, phones, URLs, organizations, and addresses into the payload.
+- Always send a fresh `etag` on `GOOGLECONTACTS_UPDATE_CONTACT`.
+- Confirm before the first write in a session. Then follow the user's standing choice.
+- Do not invent emails, phones, employers, or profile URLs.
+- Skip a contact when the identity match is not unique.
+- Do not dump the full address book into chat. Summarize; show personal details only for contacts just updated or explicitly requested.
+- Workspace directory tools are not the personal address book. Use connections, not directory people, unless the user asked for the domain directory.

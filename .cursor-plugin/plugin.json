@@ -1,0 +1,31 @@
+{
+  "name": "google-contacts-enricher",
+  "displayName": "Google Contacts Enricher",
+  "version": "1.0.0",
+  "description": "Fetch every Google contact, find missing fields, research public and inbox context, then write complete profiles back to Google Contacts.",
+  "author": {
+    "name": "Andrew Hillman",
+    "email": "ajhillman@gmail.com"
+  },
+  "homepage": "https://github.com/ajhillman/PerplexityClaude",
+  "repository": "https://github.com/ajhillman/PerplexityClaude",
+  "license": "MIT",
+  "keywords": [
+    "google-contacts",
+    "people-api",
+    "contact-enrichment",
+    "crm",
+    "composio"
+  ],
+  "category": "productivity",
+  "tags": [
+    "contacts",
+    "google",
+    "enrichment",
+    "agent"
+  ],
+  "skills": "./skills/",
+  "rules": "./rules/",
+  "agents": "./agents/",
+  "commands": "./commands/"
+}
